@@ -1,35 +1,233 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ThemeProvider } from './theme/ThemeProvider';
+import { SidebarProvider } from './contexts/SidebarContext';
+import { UserProvider } from './contexts/UserContext';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// Auth Pages
+import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
+import Register from './pages/Register';
+
+// Admin Pages
+import AdminDashboard from './pages/Admin/DashboardAdmin';
+import AssetHome from './pages/Admin/Requested_Assets/AssetHome';
+import AssetMonitoringAdmin from './pages/Admin/Requested_Assets/AssetMonitoringAdmin';
+import DueAsset from './pages/Admin/Requested_Assets/DueAssset';
+import AssetAdmin from './pages/Admin/Organization_Assets/AssetAdmin';
+import MaintenanceHome from './pages/Admin/Maintenance/MaintenanceHome';
+import MaintenanceDetails from './pages/Admin/Maintenance/MaintenanceDetails';
+import ReportHome from './pages/Admin/Reports/ReportHome';
+import AssetReport from './pages/Admin/Reports/AssetReport';
+import MealReport from './pages/Admin/Reports/MealReport';
+import MaintenanceReport from './pages/Admin/Reports/MaintenanceReport';
+import AddMealTime from './pages/Admin/Meal_Function/AddMealTime';
+import AddMealType from './pages/Admin/Meal_Function/AddMealType';
+import { Users } from './pages/Admin/UserManagement/Users';
+
+// User Pages
+import UserDashboard from './pages/User/DashboardUser';
+import AssetRequestUsers from './pages/User/RequestAsset/AssetRequestUsers';
+import DueAssetUser from './pages/User/RequestAsset/DueAssetUser';
+import MealCalender from './pages/User/MealRequest/MealCalander';
+import MaintenanceDetailsUser from './pages/User/Maintenance/MaintenanceDetailsUser';
+
+// Shared Pages
+import Notification from './pages/Notification';
+import Settings from './pages/Settings';
+
+// Components
+import ProtectedRoute from './components/ProtectedRoute';
+import React from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider>
+      <Router>
+        <UserProvider>
+          <SidebarProvider>
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<Navigate to="/login" replace />} />
+
+              {/* Admin Routes */}
+              <Route
+                path="/admin-dashboardadmin"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-assethome"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <AssetHome />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-assetmonitoring"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <AssetMonitoringAdmin />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-dueassets"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <DueAsset />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-asset"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <AssetAdmin />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-maintenancehome"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <MaintenanceHome />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-maintenance"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <MaintenanceDetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-reporthome"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <ReportHome />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-assetreport"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <AssetReport />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-mealreport"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <MealReport />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-maintenancereport"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <MaintenanceReport />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-addmealtime"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <AddMealTime />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-addmealtype"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <AddMealType />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin-users"
+                element={
+                  <ProtectedRoute requiredRole="Admin">
+                    <Users />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* User Routes */}
+              <Route
+                path="/user-dashboarduser"
+                element={
+                  <ProtectedRoute requiredRole="User">
+                    <UserDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/user-assetrequest"
+                element={
+                  <ProtectedRoute requiredRole="User">
+                    <AssetRequestUsers />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/user-dueassets"
+                element={
+                  <ProtectedRoute requiredRole="User">
+                    <DueAssetUser />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/user-mealcalendar"
+                element={
+                  <ProtectedRoute requiredRole="User">
+                    <MealCalender />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/user-maintenance"
+                element={
+                  <ProtectedRoute requiredRole="User">
+                    <MaintenanceDetailsUser />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Shared Routes */}
+              <Route path="/notifications" element={<Notification />} />
+              <Route path="/settings" element={<Settings />} />
+
+              {/* Fallback Route */}
+              <Route path="*" element={<Navigate to="/login" replace />} />
+            </Routes>
+            <ToastContainer />
+          </SidebarProvider>
+        </UserProvider>
+      </Router>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
