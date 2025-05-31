@@ -211,6 +211,4 @@ A detailed SQL schema is provided in the [`backend/README.md`](./backend/README.
 
 This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
 
----
 
-Let me know if you want the README to include contributor sections, deployment instructions (e.g., Docker), or environment variable tips.
