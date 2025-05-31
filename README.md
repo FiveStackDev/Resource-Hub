@@ -8,8 +8,8 @@
 
 ```
 /Resource_Hub
-├── frontend/                # React frontend app
-└── backend/                 # Ballerina backend API
+├── Front-End/                # React frontend app
+└── Back-End/                 # Ballerina backend API
 ```
 
 ---
