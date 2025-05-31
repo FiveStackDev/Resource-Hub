@@ -1,6 +1,6 @@
 [package]
 org = "user"
-name = "backend"
+name = "Back_End_Ballerina"
 version = "0.1.0"
 distribution = "2201.10.3"
 
