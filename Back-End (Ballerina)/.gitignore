@@ -1,11 +1,37 @@
-# Ballerina generates this directory during the compilation of a package.
-# It contains compiler-generated artifacts and the final executable if this is an application package.
-target/
-
-# Ballerina maintains the compiler-generated source code here.
-# Remove this if you want to commit generated sources.
-generated/
-
-# Contains configuration values used during development time.
-# See https://ballerina.io/learn/provide-values-to-configurable-variables/ for more details.
+# Ballerina configuration
 Config.toml
+Ballerina.lock
+
+# Build outputs
+/target/
+*.balx
+*.balo
+*.jar
+
+# Logs
+*.log
+
+# IDE configurations
+.idea/
+.vscode/
+*.iml
+.project
+.settings/
+.classpath
+
+# OS specific files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
