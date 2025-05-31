@@ -7,7 +7,7 @@
 ## 📁 Project Structure
 
 ```
-/Resource_Hub
+/Resource-Hub
 ├── Front-End/                # React frontend app
 └── Back-End/                 # Ballerina backend API
 ```
