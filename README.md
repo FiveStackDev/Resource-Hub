@@ -87,8 +87,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/FiveStackDev/Resource_Hub.git
-cd Resource_Hub
+git clone https://github.com/FiveStackDev/Resource-Hub.git
+cd Resource-Hub
 ```
 
 ---
